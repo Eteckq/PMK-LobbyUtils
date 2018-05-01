@@ -41,7 +41,7 @@ public class HotBarListener implements Listener {
 		
 		Player p = e.getPlayer();
 		
-		p.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 99999999, 12, true), true);	
+		p.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, Integer.MAX_VALUE, 12, true), true);	
 		p.setGameMode(GameMode.SURVIVAL);
 		
 		HotBarManager.setPlayerItem(e.getPlayer(), hotBarList);
@@ -56,13 +56,13 @@ public class HotBarListener implements Listener {
 			return;
 		
 		if(playerList.contains(e.getPlayer())) {
-			e.getPlayer().sendMessage(ChatColor.RED + "Patientez ! Requete déjà en cours");
+			e.getPlayer().sendMessage(ChatColor.RED + "Patientez ! Requete dÃ©jÃ  en cours");
 			return;
 		}else {
 			playerList.add(e.getPlayer());
 		}
 		
-		// envoie des requètes
+		// envoie des requÃ¨tes
 		
 		ItemStack item = e.getItem();
 		ItemMeta itemMeta = item.getItemMeta();
@@ -84,14 +84,14 @@ public class HotBarListener implements Listener {
 						if((hotBarData.isServerState().equals("prime") & p.hasPermission("server."+hotBarData.getServerName()+".primejoin")) | hotBarData.isServerState().equals("on")) {
 							
 							// requete de connexion
-							p.sendMessage("§e§l[§r§6PumpMyCord§r§e§l]§r §aRequête de connexion au serveur §2§o§n" + hotBarData.getServerName() + "§r§a bien envoyé !");
+							p.sendMessage("Â§eÂ§l[Â§rÂ§6PumpMyCordÂ§rÂ§eÂ§l]Â§r Â§aRequÃªte de connexion au serveur Â§2Â§oÂ§n" + hotBarData.getServerName() + "Â§rÂ§a bien envoyÃ© !");
 							HotBarBungee.connectServer(p, hotBarData.getServerName());
 							
 						}else if(hotBarData.isServerState().equals("off") | hotBarData.isServerState().equals("dev")) {
 							
 							//pas dispo
-							p.sendMessage("§e§l[§r§6PumpMyCord§r§e§l]§r §cRequête de connexion au serveur §4§o§n" + hotBarData.getServerName() + "§r§c non envoyé, serveur indisponible !");
-							p.sendMessage("§e§l[§r§6PumpMyCord§r§e§l]§r §cRaison : §4§o§n" + hotBarData.getDownRaison());
+							p.sendMessage("Â§eÂ§l[Â§rÂ§6PumpMyCordÂ§rÂ§eÂ§l]Â§r Â§cRequÃªte de connexion au serveur Â§4Â§oÂ§n" + hotBarData.getServerName() + "Â§rÂ§c non envoyÃ©, serveur indisponible !");
+							p.sendMessage("Â§eÂ§l[Â§rÂ§6PumpMyCordÂ§rÂ§eÂ§l]Â§r Â§cRaison : Â§4Â§oÂ§n" + hotBarData.getDownRaison());
 							
 							removeQueuePlayer(p);
 							e.setCancelled(true);
@@ -100,7 +100,7 @@ public class HotBarListener implements Listener {
 						}else {
 							
 							//pas la permission
-							p.sendMessage("§e§l[§r§6PumpMyCord§r§e§l]§r §cRequête de connexion au serveur §4§o§n" + hotBarData.getServerName() + "§r§c non envoyé, permission insuffisante !");
+							p.sendMessage("Â§eÂ§l[Â§rÂ§6PumpMyCordÂ§rÂ§eÂ§l]Â§r Â§cRequÃªte de connexion au serveur Â§4Â§oÂ§n" + hotBarData.getServerName() + "Â§rÂ§c non envoyÃ©, permission insuffisante !");
 							
 							removeQueuePlayer(p);
 							e.setCancelled(true);
@@ -110,7 +110,7 @@ public class HotBarListener implements Listener {
 						
 					}else {
 						//pas la permission
-						p.sendMessage("§e§l[§r§6PumpMyCord§r§e§l]§r §cRequête de connexion au serveur §4§o§n" + hotBarData.getServerName() + "§r§c non envoyé, permission insuffisante !");
+						p.sendMessage("Â§eÂ§l[Â§rÂ§6PumpMyCordÂ§rÂ§eÂ§l]Â§r Â§cRequÃªte de connexion au serveur Â§4Â§oÂ§n" + hotBarData.getServerName() + "Â§rÂ§c non envoyÃ©, permission insuffisante !");
 						
 						removeQueuePlayer(p);
 						e.setCancelled(true);
